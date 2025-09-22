@@ -9,3 +9,23 @@ header{
     text-align: center;
     padding: 1rem;
 }
+ main {
+    padding: 1rem;
+ }
+
+#dashboard{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem 0;
+}
+.card{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 100%;
+    text-align: center;
+}
