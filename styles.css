@@ -21,11 +21,58 @@ header{
 .card{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 30px;
     background: white;
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    width: 100%;
+    width: 30%;
     text-align: center;
+}
+ #categories {
+   margin: 2rem 0;
+ }
+#categories h2 {
+   margin-bottom: 1rem;
+}
+
+ .list{
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   gap: 1rem;
+ }
+
+ .category{
+   background: #87b988;
+   padding: 1rem;
+   border-radius: 10px;
+   box-shadow: 0 5px 5px #1010101a;
+   text-align: center;
+   font-weight: bold;
+ }
+
+.category.selected{
+   background: #4CAF50;
+   color: white;
+}
+
+#float-btn{
+    position: fixed;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
+    right: 20px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+    transition: transform 0.3s ease;
+}
+
+#float-btn:hover{
+    transform: scale(1.3);
 }

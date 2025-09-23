@@ -13,23 +13,33 @@
     </header>  
     <main>  
         <section id ="dashboard"> 
-        <div class="card">
-            <div>   
+            <div class="card">   
                 <h2>Cash Balance</h2>
                 <p id="balance">#9</p>
             </div>
                 
-            <div>   
+            <div class="card">   
                <h2>Income</h2>
                <p id="income">#9</p>
             </div>
 
-            <div>   
+            <div class="card">   
               <h2>Expenses</h2>
               <p id="expenses">#9</p>
-            </div>
-        </div>      
+            </div>      
         </section>
-    </main>        
+
+        <section id ="categories">   
+            <h2>Categories</h2>
+            <div = "list"> 
+               <div class="category" onclick="selectCategory(this)">Groceries</div>
+               <div class="category" onclick="selectCategory(this)">Transport</div>
+               <div class="category" onclick="selectCategory(this)">Chow</div>
+               <div class="category" onclick="selectCategory(this)">Bills</div>
+            </div>
+        </section>
+
+        <button id="float-btn">+</button>
+    </main> 
 </body>
 </html>
