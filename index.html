@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expense tracker</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
@@ -39,7 +39,31 @@
             </div>
         </section>
 
-        <button id="float-btn">+</button>
+        <button id="add-btn">+</button>
+
+       <div id="expense-modal" class="modal">
+  <div class="modal-content">
+    <span id="close-modal" class="close">&times;</span>
+    <h2>Add New Expense</h2>
+    <form id="expense-form">
+      <label for="title">Title</label>
+      <input type="text" id="title" required>
+
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" required>
+
+      <label for="category">Category</label>
+      <select id="category">
+        <option>Food</option>
+        <option>Transport</option>
+        <option>Shopping</option>
+        <option>Other</option>
+      </select>
+
+      <button type="submit">Add Expense</button>
+    </form>
+  </div>
+</div>
     </main> 
 </body>
 </html>
