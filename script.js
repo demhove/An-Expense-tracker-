@@ -26,9 +26,23 @@ closeBtn.addEventListener('click', () => {
   modal.style.display = 'none';
 });
 
-
 window.addEventListener('click', (e) => {
   if (e.target === modal) {
     modal.style.display = 'none';
   }
 });
+  
+const expenseForm = document.getElementById('expense-form');
+
+expenseForm.addEventListener('submit', (e) =>{
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const category = document.getElementById('category').value;
+    const amount = document.getElementById('amount').value;
+
+    console.log("Title:", title);
+    console.log('Amount:', amount);
+    console.log('Category:', category);
+});
+
