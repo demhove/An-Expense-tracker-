@@ -32,17 +32,39 @@ window.addEventListener('click', (e) => {
   }
 });
   
-const expenseForm = document.getElementById('expense-form');
 
-expenseForm.addEventListener('submit', (e) =>{
+const expenseForm = document.getElementById('expense-form');
+const expenseList = document.getElementById('expense-list');
+
+console.log("Expense list element:", expenseList);
+
+
+
+ expenseForm.addEventListener('submit', (e)=>{
     e.preventDefault();
+
+
 
     const title = document.getElementById('title').value;
     const category = document.getElementById('category').value;
     const amount = document.getElementById('amount').value;
 
-    console.log("Title:", title);
-    console.log('Amount:', amount);
-    console.log('Category:', category);
-});
+        console.log("Form submitted:", title, amount, category);
 
+
+    const li = document.createElement('li');
+    li.classList.add('expense-item');
+    li.innerHTML = `
+         <span class="expense-title">${title}</span>
+            <span class="expense-category">${category}</span>
+            <span class="expense-amount">$${amount}</span>
+        `;
+
+    expenseList.appendChild(li);
+
+    expenseForm.reset();
+    modal.style.display = 'none';
+
+ });
+
+ 
