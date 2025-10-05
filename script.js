@@ -1,3 +1,16 @@
+  let income = 0;
+  let expenses = 0;
+  let cashBalance = 1400;
+
+  function updateDashboard() {
+    document.getElementById("income").textContent = `₦${income}`;
+    document.getElementById("expenses").textContent = `₦${expenses}`;
+    document.getElementById("balance").textContent = `₦${cashBalance}`;
+  }; 
+  updateDashboard();
+
+
+ 
  function  selectCategory(element){
         document.querySelectorAll('.category').forEach(cat => {
             cat.classList.remove('selected')
@@ -43,28 +56,44 @@ console.log("Expense list element:", expenseList);
  expenseForm.addEventListener('submit', (e)=>{
     e.preventDefault();
 
-
-
     const title = document.getElementById('title').value;
     const category = document.getElementById('category').value;
-    const amount = document.getElementById('amount').value;
-
-        console.log("Form submitted:", title, amount, category);
+    const amount = parseFloat(document.getElementById('amount').value);
 
 
     const li = document.createElement('li');
     li.classList.add('expense-item');
-    li.innerHTML = `
+
+    if(category.toLowerCase() === 'income'){
+       income += amount;
+        cashBalance += amount;
+
+        li.innerHTML = `
+        <span class = "espense-title">${title}</span>
+        <span class = "expense-category">${category}</span>
+        <span class = "expense-amount style = "color:green"  income">+₦${amount}</span>
+        `;
+    }else{
+      expenses += amount;
+      cashBalance -= amount;
+
+      li.innerHTML = `
          <span class="expense-title">${title}</span>
             <span class="expense-category">${category}</span>
-            <span class="expense-amount">$${amount}</span>
+            <span class="expense-amount" style = "color:red">-₦${amount}</span>
         `;
+    }
+    
 
     expenseList.appendChild(li);
+        updateDashboard();
+
 
     expenseForm.reset();
     modal.style.display = 'none';
 
  });
+
+ 
 
  
