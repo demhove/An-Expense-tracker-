@@ -55,23 +55,23 @@
     <div id="expense-modal" class="modal">
       <div class="modal-content">
         <span id="close-modal" class="close">&times;</span>
-        <h2>Add New Expense</h2>
+        <h2>Add Transaction</h2>
         <form id="expense-form">
           <label for="title">Title</label>
-          <input type="text" id="title" required>
-
-          <label for="amount">Amount</label>
-          <input type="number" id="amount" required>
+          <input type="text" id="title" placeholder="e.g., Salary, Groceries" required>
 
           <label for="category">Category</label>
           <select id="category" required>
-            <option>Groceries</option>
-            <option>Transport</option>
-            <option>Chow</option>
-            <option>Bills</option>
+            <option value="">--Select category--</option>
+            <option value="Groceries">Groceries</option>
+            <option value="Transport">Transport</option>
+            <option value="Chow">Chow</option>
+            <option value="Bills">Bills</option>
           </select>
-
-          <button type="submit">Add Expense</button>
+           
+          <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="Enter amount" required />
+          <button type="submit">Add</button>
         </form>
       </div>
     </div>

@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body{
    margin: 0;
    font-family:Arial, Helvetica, sans-serif;
@@ -44,7 +50,7 @@ header h1 {
 
 
 main {
-    padding: 1rem;
+    padding: 10px;
  }
 
 #dashboard {
@@ -238,24 +244,6 @@ main {
   to   { opacity: 1; transform: scale(1); }
 }
 
-#expense-list {
-  list-style: none;
-  padding: 0;
-  margin: 20px;
-}
-
-.expense-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #f9f9f9;
-  margin-bottom: 10px;
-  padding: 12px 16px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  font-size: 1rem;
-    color: #222; 
-}
 
 .expense-title {
   font-weight: bold;
@@ -278,3 +266,30 @@ main {
  .expense-item:hover{
     background: #f4a906;
  }
+
+#expense-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.expense-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  margin: 4px 0;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  font-size: 1rem;
+  color: #222;
+}
+
+#expense-list li:first-child {
+  margin-top: 0;
+}
