@@ -3,10 +3,10 @@
   let cashBalance = 1400;
   const STORAGE_KEY = 'expense_tracker_data_v1';
 
-  let transactions = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  let transactions = JSON.parse(localStorage.getItem('expense_tracker_data_v1')) || [];
 
   function saveTransactions() {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(transactions))
+    localStorage.setItem('expense_tracker_data_v1', JSON.stringify(transactions))
   }
 
   
@@ -18,13 +18,23 @@ function escapeHtml(str) {
 }
 
 
-  function updateDashboard() {
-    document.getElementById("income").textContent = `₦${income}`;
-    document.getElementById("expenses").textContent = `₦${expenses}`;
-    document.getElementById("balance").textContent = `₦${cashBalance}`;
+  function updateDashboard(){
+    const income = transactions
+    .filter((tx => tx.type === 'income'))
+    .reduce((sum, tx) => sum + tx.amount, 0);
+
+    const expenses = transactions
+    .filter((tx) => tx.type === 'expense')
+    .reduce((sum, tx) => sum + tx.amount, 0);
+
+  const cashBalance = income - expenses;
+    document.getElementById("income").textContent = `₦${income.toLocaleString()}`;
+    document.getElementById("expenses").textContent = `₦${expenses.toLocaleString()}`;
+    document.getElementById("balance").textContent = `₦${cashBalance.toLocaleString()}`;
   }; 
   updateDashboard();
 
+  
 
  
  function  selectCategory(element){
@@ -65,6 +75,16 @@ const expenseList = document.getElementById('expense-list');
 function addTransactionToList(tx){
   const li = document.createElement('li');
   li.className = 'expense-item';
+  li.innerHTML = li.innerHTML.trimStart();
+  li.innerHTML =`
+    <span class="expense-title" style ="text-align: start">${tx.title}</span>
+    <span class="expense-category">${tx.category}</span>
+    <span class="expense-amount" style="color:${tx.type === 'income' ? '#38a169' : '#e63946'};">
+      ${tx.type === 'income' ? '+' : '-'}₦${tx.amount.toLocaleString()}
+    </span>
+    <button class="delete-btn" data-id="${tx.id}">✕</button>
+  `;
+  document.getElementById("expense-list").prepend(li);
 
   const sign = tx.type === 'income' ? '+' : '-';
     const colorStyle = tx.type === 'income' ? 'style="color:#2a9d8f"' : 'style="color:#e63946"';
@@ -92,17 +112,18 @@ delBtn.addEventListener('click', () => {
 })
 };
 
-  
-
-   
 
  expenseForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-
+    const type = document.getElementById('type').value;
     const title = document.getElementById('title').value;
     const category = document.getElementById('category').value;
     const amount = parseFloat(document.getElementById('amount').value);
 
+    
+     
+     e.target.reset();
+     document.getElementById('expense-modal').style.display = 'none';
 
     const li = document.createElement('li');
     li.classList.add('expense-item');
@@ -127,6 +148,16 @@ delBtn.addEventListener('click', () => {
         `;
     }
     
+const categorySelect = document.getElementById("category");
+
+categorySelect.addEventListener("change", () => {
+  categorySelect.classList.remove("income", "expense");
+  if (categorySelect.value.toLowerCase() === "income") {
+    categorySelect.classList.add("income");
+  } else if (categorySelect.value.toLowerCase() === "expense") {
+    categorySelect.classList.add("expense");
+  }
+});
 
    
 const tx = {
@@ -141,8 +172,6 @@ transactions.push(tx);
 saveTransactions();
 renderTransactions();
 updateDashboard();
-
-
 
     expenseForm.reset();
     modal.style.display = 'none';
