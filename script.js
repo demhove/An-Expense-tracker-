@@ -116,11 +116,9 @@ delBtn.addEventListener('click', () => {
  expenseForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     const type = document.getElementById('type').value;
-    const title = document.getElementById('title').value;
-    const category = document.getElementById('category').value;
+    const title = document.getElementById('title').value.trim();
+    const category = document.getElementById('category').value.toLowerCase();
     const amount = parseFloat(document.getElementById('amount').value);
-
-    
      
      e.target.reset();
      document.getElementById('expense-modal').style.display = 'none';
@@ -165,7 +163,7 @@ const tx = {
   title,
   category,
   amount,
-  type: category.toLowerCase() === "income" ? "income" : "expense",
+  type,
 };
 
 transactions.push(tx);
@@ -202,5 +200,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderTransactions();
   updateDashboard();
+  
+});
+  
+
+document.querySelectorAll(".category").forEach(cat => {
+  cat.addEventListener("click", () => {
+    const selectedCategory = cat.dataset.category.toLowerCase();
+    document.querySelectorAll(".category").forEach(c => c.classList.remove("selected"));
+    cat.classList.add("selected");
+
+    const filtered = transactions.filter(tx => tx.category.toLowerCase() === selectedCategory);
+    renderFilteredTransactions(filtered);
+  });
 });
 
+function renderFilteredTransactions(list) {
+  const expenseList = document.getElementById("expense-list");
+  expenseList.innerHTML = "";
+
+  if (list.length === 0) {
+    expenseList.innerHTML = `<li style="text-align:center;color:#777;">No transactions in this category</li>`;
+    return;
+  }
+
+  for (const tx of list) addTransactionToList(tx);
+}
+
+
+document.getElementById("show-all").addEventListener("click", () => {
+  document.querySelectorAll(".category").forEach(c => c.classList.remove("selected"));
+  renderTransactions();
+});

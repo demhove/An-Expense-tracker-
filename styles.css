@@ -90,15 +90,15 @@ main {
 }
 
 #balance {
-  color: #2a9d8f; /* Teal for balance */
+  color: #2a9d8f; 
 }
 
 #income {
-  color: #38a169; /* Green for income */
+  color: #38a169; 
 }
 
 #expenses {
-  color: #e63946; /* Red for expenses */
+  color: #e63946; 
 }
 
 #categories {
@@ -140,7 +140,7 @@ main {
 
 
 .category.selected {
-  background: linear-gradient(135deg, #6dd5ed, #2193b0); /* soft gradient */
+  background: linear-gradient(135deg, #6dd5ed, #2193b0); 
   color: #fff;
   border-color: #2193b0;
   font-weight: bold;
@@ -294,7 +294,7 @@ main {
   margin-top: 0;
 }
 
-#category {
+#type{
   background: linear-gradient(135deg, #f0f0f0, #e0e0e0);
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -309,12 +309,12 @@ main {
 }
 
 
-#category:hover {
+#type:hover {
   background: linear-gradient(135deg, #e8f5e9, #dcedc8);
   border-color: #81c784;
 }
 
-#category:focus {
+#type:focus {
   border-color: #4caf50;
   box-shadow: 0 0 6px rgba(76, 175, 80, 0.4);
 }
@@ -328,15 +328,51 @@ main {
 }
 
 
-#category.income {
+#type.income {
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   color: #2e7d32;
   border-color: #81c784;
 }
 
-#category.expense {
+#type.expense {
   background: linear-gradient(135deg, #ffebee, #ffcdd2);
   color: #c62828;
   border-color: #ef9a9a;
 }
 
+.filter-controls {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#show-all {
+  background: linear-gradient(135deg, #2a9d8f, #38b2ac);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: all 0.25s ease-in-out;
+}
+
+#show-all:hover {
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+#show-all:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.category.selected {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  transform: scale(1.05);
+}

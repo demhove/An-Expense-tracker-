@@ -30,23 +30,24 @@
         <h2>Expenses</h2>
         <p id="expenses">#9</p>
       </div>
-    </section>
-
-    
-    <section id="categories">
-      <h2>Categories</h2>
-      <div class="list">
-        <div class="category" onclick="selectCategory(this)">Groceries</div>
-        <div class="category" onclick="selectCategory(this)">Transport</div>
-        <div class="category" onclick="selectCategory(this)">Chow</div>
-        <div class="category" onclick="selectCategory(this)">Bills</div>
-      </div>
-    </section>
-
-      <select id="category">
+    </section>  
+      <select id="type">
   <option value="income">Income</option>
   <option value="expense">Expense</option>
       </select>
+
+    <section id="categories">
+      <h2>Categories</h2>
+      <div class="list">
+        <div class="category" onclick="selectCategory(this)" data-category="groceries">Groceries</div>
+        <div class="category" onclick="selectCategory(this)" data-category="transport">Transport</div>
+        <div class="category" onclick="selectCategory(this)" data-category="chow">Chow</div>
+        <div class="category" onclick="selectCategory(this)" data-category="bills">Bills</div>
+        <div class="category" onclick="selectCategory(this)"data-category="bi-weekly pay">Bi-weekly pay</div>
+        <div class="category" onclick="selectCategory(this)" data-category="monthly income">Monthly income</div>
+         <div id="show-all" class="category"> All</div>
+      </div>
+    </section>
 
   
     <button id="add-btn">+</button>
@@ -67,12 +68,14 @@
           <input type="text" id="title" placeholder="e.g., Salary, Groceries" required>
 
           <label for="category">Category</label>
-          <select id="category" required>
+          <select id="category" required >
             <option value="">--Select category--</option>
             <option value="Groceries">Groceries</option>
             <option value="Transport">Transport</option>
             <option value="Chow">Chow</option>
             <option value="Bills">Bills</option>
+            <option value="Bi-weekly pay">Bi-weekly pay</option>
+            <option value="Monthly income">Monthly income</option>
           </select>
            
           <label for="amount">Amount</label>
@@ -81,6 +84,8 @@
         </form>
       </div>
     </div>
+    
+
   </main>
 
   <script src="script.js"></script>
